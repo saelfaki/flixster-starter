@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import MovieList from './MovieList'
 
 
 
@@ -32,6 +33,11 @@ const App = () => {
     }
   }, [pageNumber, url]);
 
+  function loadButton() {
+    setPageNumber(lastPage => lastPage + 1);
+    setUrl(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNumber+1}`);
+  }
+
 
 
 
@@ -43,6 +49,9 @@ return(
       <h1>Flixster</h1>
     </header>
     <main>
+
+    <MovieList displayModal={openModal} movieData={movies} favorited={handleFavoritedMovies} watched={handleWatchedMovies}/>
+    <button className="loadmore"onClick={loadButton}>Load More</button>
 
 
     </main>
