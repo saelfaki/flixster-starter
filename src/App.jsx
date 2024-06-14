@@ -15,6 +15,8 @@ const App = () => {
   const [nowPlaying, setnowPlaying] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [url, setUrl] = useState(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNumber}`);
+  const [isOpen, setIsOpen] = useState(false);
+  const [filterOption, setFilterOption] = useState('genre');
 
 
 
@@ -87,6 +89,41 @@ const App = () => {
     setShowModal(false);
   };
 
+  useEffect(() => {
+    if (filterOption === 'comedy') {
+      setUrl(`https://api.themoviedb.org/3/discover/movie?api_key=<2f8cd4ccd07611c213b7f4f3511f83fd>&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=35&page=${pageNumber}`);
+    } else if (filterOption === 'action') {
+      setUrl(`https://api.themoviedb.org/3/discover/movie?api_key=<2f8cd4ccd07611c213b7f4f3511f83fd>&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=28&page=${pageNumber}`);
+    } else if (filterOption === 'fantasy') {
+      setUrl(`https://api.themoviedb.org/3/discover/movie?api_key=<2f8cd4ccd07611c213b7f4f3511f83fd>&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=14&page=${pageNumber}`);
+    } else {
+      setUrl(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${pageNumber}`);
+    }
+  }, [filterOption, pageNumber]);
+
+
+
+
+
+
+  const handleFilterChange = (event) => {
+    setFilterOption(event.target.value);
+
+
+    let filteredMovies;
+    if (event.target.value === 'releaseDate') {
+      filteredMovies = [...movies].sort((a, b) => (new Date(b.release_date)) - (new Date(a.release_date)))
+    } else if (event.target.value === 'rating') {
+      filteredMovies =  [...movies].sort((a, b) => (b.vote_average - a.vote_average))
+    } else {
+      filteredMovies = [...movies]
+    };
+
+
+    setMovies(filteredMovies);
+  };
+
+
 
 
 
@@ -101,6 +138,18 @@ return(
     <div className="App">
     <header className="App-header">
       <h1>Flixster</h1>
+      <div>
+         <select value={filterOption} onChange={handleFilterChange}>
+           <option value="">Sort</option>
+           <option value="">All</option>
+           <option value="comedy">Comedy</option>
+           <option value="action">Action</option>
+           <option value="fantasy">Fantasy</option>
+           <option value="releaseDate">Release Date</option>
+           <option value="rating">Rating</option>
+         </select>
+       </div>
+
       <div className="nowplayingButton">
         <button onClick={handlenowPlaying}>Now Playing</button>
        </div>
