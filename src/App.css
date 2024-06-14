@@ -2,8 +2,7 @@
 
 .App {
   text-align: center;
-  background-image: url("public/moviebackground.jpg");
-  /* background-color: brown; */
+  background-image: url("/public/moviebackground.jpg");
 
 }
 
