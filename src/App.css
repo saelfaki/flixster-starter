@@ -1,28 +1,59 @@
+
+
 .App {
   text-align: center;
+  background-image: url("public/moviebackground.jpg");
+}
+
+
+.nowplayingButton:hover{
+  transform: scale(1.2);
+}
+
+
+.searchButton:hover{
+  transform: scale(1.2);
+}
+
+.footer{
+  padding: 5px;
+  font-family: 'impact', sans-serif;
+  position: sticky;
+  background: transparent;
+  backdrop-filter: blur(100px);
+  color:aliceblue;
+  bottom: 0;
+
 }
 
 .App-header {
-  background-color: #282c34;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   color: white;
-  padding: 20px;
+  padding: 9px;
+  font-family: 'impact', sans-serif;
+  font-size: x-large;
+  position: sticky;
+  background: transparent;
+  backdrop-filter: blur(100px);
 }
 
-@media (max-width: 600px) {
-  .movie-card {
-    width: 100%;
-  }
+.loadmore{
+  z-index: 2;
+}
 
-  .search-bar {
-    flex-direction: column;
-    gap: 10px;
-  }
 
-  .search-bar form {
-    flex-direction: column;
-  }
+.movie-card {
+  width: 100%;
+}
+
+.search-bar {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-bar form {
+  flex-direction: column;
 }
