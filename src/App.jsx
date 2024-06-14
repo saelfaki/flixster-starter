@@ -7,7 +7,7 @@ import Sidebar from './Sidebar';
 
 
 const App = () => {
- const[movies, setMovies] = useState([]);
+ const [movies, setMovies] = useState([]);
  const [pageNumber, setPageNumber] = useState(1);
  const [input, setInput] = useState('');
  const [OpenSearch, setOpenSearch] = useState(false);
