@@ -1,0 +1,16 @@
+.sidebar-card{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 450px;
+    justify-content: space-between;
+}
+
+.sidebar-moviepic{
+    width: 50px;
+    height: 70px;
+}
